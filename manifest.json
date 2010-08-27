@@ -9,7 +9,7 @@
                             "128": "images/icons/128.png"},
   	"name":	           "Startpage Extension",
   	"options_page":	   "html/options.html",
-  	"version":         "1.0",
+  	"version":         "0.2",
 	"permissions":	   ["tabs", "bookmarks", "http://*.google.com/", "https://*.google.com/"],
 
 	"chrome_url_overrides": {

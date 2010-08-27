@@ -1,32 +1,41 @@
 <html>
 <head>
-	<title>New Tab</title>
+	<title>My Favorites</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<link rel="stylesheet" href="../css/layout.css" type="text/css" media="screen" /> 
 </head>
+	
 <body>
-	zuletzt geschlossen:
-	<ul>
-		<li>nix</li>
-	</ul>
 
-	<br /><br /><br />
-
-	Bookmarks:
-	<ul>
-		<li>nix</li>
-	</ul>
-
-
-	<br /><br /><br />
+    <div id="recentlyClosedTabs" class="Default">
+		<ul>
+			<li><a href="http://facebook.com">facebook</a></li>
+			<li><a href="http://facebook.com">facebook</a></li>
+			<li><a href="http://facebook.com">facebook</a></li>
+			<li><a href="http://facebook.com">facebook</a></li>
+			<li><a href="http://facebook.com">facebook</a></li>
+		</ul>
+	</div> 
+    
 
 
-	Andere:
-	<ul>
-		<li>nix</li>
-	</ul>
+    
+	<div style="position:absolute; left:700; top:350;">
+		<img src="../images/google.png">
+	</div>
 
-
+	<div style="position:absolute; left:700; top:450;" id="searchwrapper" name="googlesearch">
+		<form method="get" action="http://www.google.com/search">
+			<input type="text" class="searchbox" name="q" value="" />
+		</form>
+	</div>
+	
+	<script>
+		document.getElementById('recentlyClosedTabs').innerHTML = localStorage.recentlyClosedTabs;
+	</script>
 
 </body>
+</html>
 
 
 

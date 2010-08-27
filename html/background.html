@@ -1,25 +1,11 @@
 <html>
   <script>
-    chrome.tabs.onRemoved.addListener(function(integer tabId) {
+    chrome.tabs.onRemoved.addListener(function (tabId) {
+		
+		chrome.tabs.get(tabId, function (tab) {
+			localStorage.recentlyClosedTabs = tab.title;
+		});
 		
     });
   </script>
-</html>
-
-//In image.html:
-<html>
-  <script>
-    function setImageUrl(url) {
-      document.getElementById('target').src = url;
-    }
-  </script>
-
-  <body>
-    <p>
-    Image here:
-    </p>
-
-    <img id="target" src="white.png" width="640" height="480">
-
-  </body>
 </html>
