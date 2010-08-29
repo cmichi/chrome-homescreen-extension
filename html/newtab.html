@@ -1,25 +1,24 @@
 <html>
 <head>
-	<title>My Favorites</title>
+	<title>My Homescreen</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 	<link rel="stylesheet" href="../css/layout.css" type="text/css" media="screen" /> 
 </head>
 	
 <body>
 
-    <div id="recentlyClosedTabs" class="Default">
-		<ul>
-			<li><a href="http://facebook.com">facebook</a></li>
-			<li><a href="http://facebook.com">facebook</a></li>
-			<li><a href="http://facebook.com">facebook</a></li>
-			<li><a href="http://facebook.com">facebook</a></li>
-			<li><a href="http://facebook.com">facebook</a></li>
+    <div class="Default" id="recentlyClosedTabs">
+		<h1>Zuletzt geschlossen</h1>
+		<ul id="recentlyClosedTabsList">
+			<li><a href="http://facebook.com">nix</a></li>
 		</ul>
 	</div> 
-    
-
-
-    
+	
+	
+	<div style="padding:5px; background: #fff; position:absolute; width:350px; height:350px; overflow:scroll; right:400px; top:50px;  " id="log"></div>
+		
+	
+    <!--
 	<div style="position:absolute; left:700; top:350;">
 		<img src="../images/google.png">
 	</div>
@@ -29,9 +28,34 @@
 			<input type="text" class="searchbox" name="q" value="" />
 		</form>
 	</div>
+	-->
 	
 	<script>
-		document.getElementById('recentlyClosedTabs').innerHTML = localStorage.recentlyClosedTabs;
+		liste = "";
+		log = document.getElementById("log");
+		
+		ob = JSON.parse(localStorage.recentlyClosedTabs);
+
+		
+//		for (var i = 0; i <10; i++) {
+		for (var i = 0; i < ob.length; i++) {
+//			log.innerHTML = log.innerHTML + "<br />" + ob[i];
+			if (ob[i] != null) {
+				_ob = JSON.parse(ob[i]);
+				log.innerHTML = log.innerHTML + "<br />" + _ob.title;
+				liste += "<li><a title='" + _ob.title + "' href='" + _ob.url + "'>" + _ob.title + "</a></li>";
+			}
+		}
+		//alert(liste);
+		
+		document.getElementById("recentlyClosedTabsList").innerHTML = liste;
+		
+			/*
+			if (typeof(_ob.title) != undefined && typeof(_ob.title) != 'undefined' && _ob.title != null && typeof(_ob.title) != null)
+				liste += _ob.title + "\n"; 
+				*/
+		
+		//alert(liste);
 	</script>
 
 </body>

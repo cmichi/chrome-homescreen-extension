@@ -1,11 +1,25 @@
 <html>
-  <script>
-    chrome.tabs.onRemoved.addListener(function (tabId) {
+	<script>
+		globalTabRegistry = new Array();
+		localStorage.recentlyClosedTabs = JSON.stringify(new Array());
+		//alert(localStorage.recentlyClosedTabs);
 		
-		chrome.tabs.get(tabId, function (tab) {
-			localStorage.recentlyClosedTabs = tab.title;
+		
+  		chrome.tabs.onRemoved.addListener(function (tabId) {
+			ob = JSON.parse(localStorage.recentlyClosedTabs);
+			ob[tabId] = globalTabRegistry[tabId];
+			localStorage.recentlyClosedTabs = JSON.stringify(ob);
+  		});
+
+		chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab)  {
+			ob =  {"title" : tab.title, "url" : tab.url};
+			globalTabRegistry[tab.id] = JSON.stringify(ob);
 		});
-		
-    });
-  </script>
+
+
+		chrome.tabs.onCreated.addListener(function (tab) {
+			ob =  {"title" : tab.title, "url" : tab.url};
+			globalTabRegistry[tab.id] = JSON.stringify(ob);
+		});
+	</script>
 </html>
