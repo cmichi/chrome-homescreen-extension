@@ -3,26 +3,27 @@
 	<title>My Homescreen</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 	<link rel="stylesheet" href="../css/layout.css" type="text/css" media="screen" /> 
+	<script type="text/javascript" src="../js/newtab.js"></script>
 </head>
-	
-<body>
+<body onload="display(0);">
+
 
 	<a href="http://www.micha.elmueller.net/" title="my homescreen">
 		<img src="../images/top3.png" alt="Icon" class="topIcon" />
 	</a>
 
+
 	<div class="mainContainer">
 	    <div id="recentlyClosedTabs" class="box">
 			<h1>Just closed</h1>
-			<ul id="recentlyClosedTabsList">
-				<li><a href="http://facebook.com">nix</a></li>
-			</ul>
 			
-			<div style="margin-top:-20px;text-align:right; padding-right:85px; font-size:13px;">
-				<a href="javascript:previous();">
-					<img src="../images/arrow_left_alt1_16x16.png" alt="previous" />
-				</a>
-				<a href="javascript:next();"><img src="../images/arrow_right_alt1_16x16.png" alt="previous" /></a>
+			<ul id="recentlyClosedTabsList"></ul>
+			
+			<div id="naviContainer">
+				<a href="javascript:next();"><img src="../images/arrows/active/right.png" alt="next" id="next_active" /></a>
+				<img src="../images/arrows/inactive/right.png" alt="next" id="next_inactive" />
+				<img src="../images/arrows/inactive/left.png" alt="previous" id="previous_inactive" />
+				<a href="javascript:previous();"><img src="../images/arrows/active/left.png" alt="previous" id="previous_active" /></a>
 			</div>
 		</div> 
 	
@@ -68,78 +69,8 @@
 		</div>
 	
 		<div id="log"></div>
-		
-	
-	    <!--
-		<div style="position:absolute; left:700; top:350;">
-			<img src="../images/google.png">
-		</div>
-
-		<div style="position:absolute; left:700; top:450;" id="searchwrapper" name="googlesearch">
-			<form method="get" action="http://www.google.com/search">
-				<input type="text" class="searchbox" name="q" value="" />
-			</form>
-		</div>
-		-->
 	</div>
 	
-	
-	<script>
-		liste = "";
-		maxEntriesPerPage = 7;
-		log = document.getElementById("log");
-		currentPage = 0;
-		ob = JSON.parse(localStorage.recentlyClosedTabs);
-		
-		String.prototype.trunc = function(n){
-		                          return this.substr(0,n-1)+(this.length>n?'...':'');
-		                         };
-
-
-		function display(page) {
-			count = 0;
-			currentPage = page;
-	//		for (var i = 0; i <10; i++) {
-			for (var i = ob.length; i > 0; i--) {
-	//			log.innerHTML = log.innerHTML + "<br />" + ob[i];
-				if (ob[i] != null) {
-					_ob = JSON.parse(ob[i]);
-				
-					if (_ob.url != "chrome://newtab/" && /* in page range */ (count / maxEntriesPerPage == page || page == 0)) {
-						count++;
-						log.innerHTML = log.innerHTML + "<br />" + _ob.title;
-						title = _ob.title;
-					
-	//					if (title.length())
-						liste += "<li><a title='" + _ob.title + "' href='" + _ob.url + "'>" + title.trunc(32) + "</a></li>";
-				
-						if (count == maxEntriesPerPage) break;
-					}
-				}
-			}
-			//alert(liste);
-		}
-		
-		display(currentPage);
-		
-		document.getElementById("recentlyClosedTabsList").innerHTML = liste;
-		
-		
-		function next() {
-			display(currentPage + 1);
-		}
-		
-		function previou() {
-			display(currentPage + 1);
-		}
-		
-			/*
-			if (typeof(_ob.title) != undefined && typeof(_ob.title) != 'undefined' && _ob.title != null && typeof(_ob.title) != null)
-				liste += _ob.title + "\n"; 
-				*/
-		
-		//alert(liste);
-	</script>
 
 </body>
 </html>

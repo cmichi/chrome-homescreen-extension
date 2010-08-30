@@ -17,7 +17,6 @@ color: #fff;
 text-shadow: 2px 2px 2px #0d0d0d;
 font-size: 18px;
 font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif;	
-	background:url(../images/bg/all.png) no-repeat center;	
 }
 
 
@@ -97,16 +96,33 @@ a:active {
 	top:200px;	
 }
 
-/*
+#naviContainer {
+	position:absolute; right:86px; bottom:32px;text-align:right; font-size:13px;
+	width:100px;
+}
+
+#naviContainer img {float:right; margin-left:5px;}
+
+#next_inactive, #previous_inactive {display:none;}
+
 .mainContainer {
 	position:absolute;
+	background:url(../images/bg/all.png) no-repeat center #000;	
+	height:100%;
+	width:100%;
+	margin-left:-720px;
+	top:0px;
+	left:50%;
+	z-index:0;
+/*	
 	left:50%;
 	top: -60px;
 	width:1440px;
 	height:900px;
 	margin-left:-720px;
 	z-index:0;
-}*/
+	*/
+}
 
 
 .bottomContainer {
@@ -132,3 +148,4 @@ a:active {
 	padding:10px 10px 10px 20px;
 	background:url(../images/box.png) no-repeat;
 }
+
