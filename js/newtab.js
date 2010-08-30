@@ -25,6 +25,7 @@ function display(page) {
     c = 0;
     onPage = 0;
     currentPage = page;
+
     //	for (var i = 0; i <10; i++) {
     for (var i = ob.length; i > 0; i--) {
         //		log.innerHTML = log.innerHTML + "<br />" + ob[i];
@@ -68,6 +69,18 @@ function display(page) {
     document.getElementById("recentlyClosedTabsList").innerHTML = liste;
 }
 
+function init() {
+	/*
+	// all "new tab" pages have to be registered in localStorage
+	
+	chrome.tabs.getSelected(integer windowId, registerTab);
+	thisTabId = 
+	_a = JSON.parse(localStorage.allNewTabs);
+	_a[] = 
+	*/
+	display(0);	
+//	alert(localStorage.recentlyClosedTabs);
+}
 
 
 
@@ -80,4 +93,8 @@ function previous() {
 }
 
 
-windows.onFocus=alert('huhu');
+chrome.extension.onRequest.addListener( function(request) { 
+	window.location.reload();
+});
+
+//window.document.onFocus=alert('huhu');
