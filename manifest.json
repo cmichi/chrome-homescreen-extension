@@ -8,7 +8,6 @@
                             "64": "images/icons/64.png", 
                             "128": "images/icons/128.png"},
   	"name":	           "Homescreen Extension",
-  	"options_page":	   "html/options.html",
   	"version":         "0.2",
 	"permissions":	   ["tabs", "bookmarks", "http://*.google.com/", "https://*.google.com/"],
 
