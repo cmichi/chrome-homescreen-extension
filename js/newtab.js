@@ -1,7 +1,8 @@
 maxEntriesPerPage = 7;
-log = document.getElementById("log");
+maxSavedClosedTabs = 100;
+log = $("log");
 currentPage = 0;
-ob = JSON.parse(localStorage.recentlyClosedTabs);
+allRecentlyClosedTabs = JSON.parse(localStorage.recentlyClosedTabs);
 
 String.prototype.trunc = function(n) {
     return this.substr(0, n - 1) + (this.length > n ? '...': '');
@@ -11,19 +12,27 @@ String.prototype.trunc = function(n) {
 function displayRecentlyClosedTabs(page) {
     if (page < 0) return;
     if (page == 0) {
-        document.getElementById('previous_inactive').style.display = "block";
-        document.getElementById('previous_active').style.display = "none";
+        $("#previous_inactive").css("display", "block");
+        $("#previous_active").css("display", "none");
     } else {
-        document.getElementById('previous_inactive').style.display = "none";
-        document.getElementById('previous_active').style.display = "block";
+        $("#previous_inactive").css("display", "none");
+        $("#previous_active").css("display", "block");
     }
 
-
+	// we cannot be sure, that there are only correct objects in the allRecentlyClosedTabs variable
+	// so we sanatize it
 	sanatizedObject = new Array();
-	for (i = 0; i < ob.length; i++) {
-        if (ob[i] != null) 
-			sanatizedObject.push(ob[i]);
+	for (i = 0; i < allRecentlyClosedTabs.length; i++) {
+        if (allRecentlyClosedTabs[i] != null)  {
+			if (i > maxSavedClosedTabs)
+				// delete it for perfomance reasons
+				allRecentlyClosedTabs.splice(i, 1);
+			else
+				sanatizedObject.push(allRecentlyClosedTabs[i]);
+		}
 	}
+	
+	localStorage.recentlyClosedTabs = JSON.stringify(allRecentlyClosedTabs);
 		
     liste = "";		
 	// es wird eigentlich rückwärts geblättert		
@@ -32,26 +41,26 @@ function displayRecentlyClosedTabs(page) {
 		 i++) {
 		if (sanatizedObject[i] != null) {
 			_ob = JSON.parse(sanatizedObject[i]);
-        	liste = "<li><a title='" + convert(_ob.title) + "' href='" + convert(_ob.url) + "'>" + convert(_ob.title.trunc(32)) + "</a></li>" + liste;
+        	liste = "<li><a title='" + convert(_ob.title) + "' href='" + convert(_ob.url) + "'>" + convert(_ob.title.trunc(37)) + "</a></li>" + liste;
 		}
     }
 
 	if (sanatizedObject.length > (page * maxEntriesPerPage) + maxEntriesPerPage) {
-        document.getElementById('next_inactive').style.display = "none";
-        document.getElementById('next_active').style.display = "block";
+        $("#next_inactive").css("display", "none");
+        $("#next_active").css("display", "block");
 	} else {
-        document.getElementById('next_inactive').style.display = "block";
-        document.getElementById('next_active').style.display = "none";
+        $("#next_inactive").css("display", "block");
+        $("#next_active").css("display", "none");
 	}
 
-    document.getElementById("recentlyClosedTabsList").innerHTML = liste;
+    $("#recentlyClosedTabsList").html(liste);
 	currentPage = page;
 }
 
 
 function _log(msg) {
-	document.getElementById('log').style.display = 'block';
-	document.getElementById('log').innerHTML = document.getElementById('log').innerHTML + "<br />" + msg;	
+	$("#log").css("display", "block");
+	$("#log").html($("#log").html() + "<br />" + msg);	
 }
 
 function init() {
@@ -63,24 +72,7 @@ function init() {
 function displayFavorites() {
 	chrome.bookmarks.getTree(function(a) {
 		//_log(a);
-
-		/*
-		<tr>
-			<td width="60" class="favBG" align="left" valign="middle">
-				<img src="../images/fav_bg.png" alt="Favorit" />
-			</td>
-			<td align="left" valign="middle">
-				<a href="http://www.spiegel.de/">Spiegel Online</a>
-			</td>
-			<td width="30">&nbsp;</td>
-			<td width="60" class="favBG" align="left" valign="middle">
-				<img src="../images/fav_bg.png" alt="Favorit" />
-			</td>
-			<td align="left" valign="middle">
-				<a href="http://www.spiegel.de/">Golem.de</a>
-			</td>
-		</tr>
-		*/		
+	
 		fertig = new Array();
 
 		ob = a[0].children[0].children;
@@ -106,7 +98,7 @@ function displayFavorites() {
 		}
 		td += "</tr>";
 
-		document.getElementById('favTable').innerHTML = td;
+		$("#favTable").html(td);
 //		alert("<pre>" + td + "</pre>");
 	});
 	//chrome.bookmarks.getChildren(string id, function callback)
@@ -114,11 +106,11 @@ function displayFavorites() {
 
 
 function next() {
-    display(currentPage + 1);
+    displayRecentlyClosedTabs(currentPage + 1);
 }
 
 function previous() {
-    display(currentPage - 1);
+    displayRecentlyClosedTabs(currentPage - 1);
 }
 
 
