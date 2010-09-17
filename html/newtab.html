@@ -3,46 +3,45 @@
 	<title>My Homescreen</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 	<link rel="stylesheet" href="../css/layout.css" type="text/css" media="screen" /> 
+	<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="../js/newtab.js"></script>
 </head>
 <body onload="javascript:init();">
 
 
 	<a href="http://www.micha.elmueller.net/" title="my homescreen">
-		<img src="../images/top3.png" alt="Icon" class="topIcon" />
+		<img src="../images/top.png" alt="Icon" class="topIcon" />
 	</a>
 	
 	
 	<table class="mainContainer" align="center">
 	<tr>
 		<td>
+		    <div id="recentlyClosedTabs" class="box">
+				<h1>Lately closed</h1>
+			
+				<ul id="recentlyClosedTabsList"></ul>
+			
+				<div id="naviContainer">
+					<a href="javascript:next();"><img src="../images/arrows/active/right.png" alt="next" id="next_active" /></a>
+					<img src="../images/arrows/inactive/right.png" alt="next" id="next_inactive" />
+					<img src="../images/arrows/inactive/left.png" alt="previous" id="previous_inactive" />
+					<a href="javascript:previous();"><img src="../images/arrows/active/left.png" alt="previous" id="previous_active" /></a>
+				</div>
+			</div> 
+		</td>
+		<td>
 	
-
-	    <div id="recentlyClosedTabs" class="box">
-			<h1>Lately closed</h1>
+			<div class="favsContainer box">
+				<h1>Favorites</h1>
 			
-			<ul id="recentlyClosedTabsList"></ul>
-			
-			<div id="naviContainer">
-				<a href="javascript:next();"><img src="../images/arrows/active/right.png" alt="next" id="next_active" /></a>
-				<img src="../images/arrows/inactive/right.png" alt="next" id="next_inactive" />
-				<img src="../images/arrows/inactive/left.png" alt="previous" id="previous_inactive" />
-				<a href="javascript:previous();"><img src="../images/arrows/active/left.png" alt="previous" id="previous_active" /></a>
+				<table id="favTable"></table>
 			</div>
-		</div> 
-
-</td><td>
+		</td>
+	</tr>
+	</table>
 	
-		<div class="favsContainer box">
-			<h1>Favorites</h1>
-			
-			<table id="favTable"></table>
-		</div>
-	
-		<div id="log"></div>
-	</td>
-	</tr></table>
-	
+	<div id="log"></div>
 
 </body>
 </html>

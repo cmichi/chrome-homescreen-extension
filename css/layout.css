@@ -47,7 +47,8 @@ a:active {
 	float:right;
 	clear:both;
 	text-align:right; 
-	margin-right:75px;
+	margin-right:45px;
+	margin-top:-5px;
 }
 
 #recentlyClosedTabsList {clear:both; float:left; }
@@ -60,7 +61,6 @@ a:active {
 	margin-top:200px;	
 }
 
-.recentlyClosedTabsList td {height:350px;}
 
 .bottomContainer {
 	background:url(../images/bg/bottom.png) repeat-y;	
@@ -85,11 +85,15 @@ a:active {
 }
 
 .box {
-	width:474px;
+	width:416px;
 	margin:0px 20px 0px 20px;
 	height:353px;
 	padding:6px 10px 10px 20px;
-	background:url(../images/box.png) no-repeat;
+	background:url(../images/box2.png) no-repeat;
 }
 
 #recentlyClosedTabsList li {margin-bottom:14px;}
+#recentlyClosedTabsList {height:220px;}
+/*
+.recentlyClosedTabsList td {height:350px;}
+*/
