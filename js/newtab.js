@@ -35,13 +35,13 @@ function displayRecentlyClosedTabs(page) {
 	localStorage.recentlyClosedTabs = JSON.stringify(allRecentlyClosedTabs);
 		
     liste = "";		
-	// es wird eigentlich rückwärts geblättert		
+	// in fact we are paging backwards through the list
     for (i = sanatizedObject.length - ((maxEntriesPerPage * page) + maxEntriesPerPage); 
 		 i < sanatizedObject.length  && i < sanatizedObject.length - ((maxEntriesPerPage * page)); 
 		 i++) {
 		if (sanatizedObject[i] != null) {
 			_ob = JSON.parse(sanatizedObject[i]);
-        	liste = "<li><a title='" + convert(_ob.title) + "' href='" + convert(_ob.url) + "'>" + convert(_ob.title.trunc(37)) + "</a></li>" + liste;
+        	liste = "<li><a title='" + convert(_ob.title) + "' href='" + convert(_ob.url) + "'>" + convert(_ob.title.trunc(33)) + "</a></li>" + liste;
 		}
     }
 
@@ -99,9 +99,7 @@ function displayFavorites() {
 		td += "</tr>";
 
 		$("#favTable").html(td);
-//		alert("<pre>" + td + "</pre>");
 	});
-	//chrome.bookmarks.getChildren(string id, function callback)
 }
 
 
