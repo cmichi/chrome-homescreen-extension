@@ -20,9 +20,9 @@ body {
 }
 
 
-h1 {font-size:20px; margin-bottom:25px;}
-
-
+h1 {font-size:20px; }
+.recentlyClosedTabs h1 {margin-bottom:25px;}
+.favsContainer h1 {margin-bottom:26px;}
 
 a:link {
 	color: #93979f;
@@ -94,6 +94,4 @@ a:active {
 
 #recentlyClosedTabsList li {margin-bottom:14px;}
 #recentlyClosedTabsList {height:220px;}
-/*
-.recentlyClosedTabsList td {height:350px;}
-*/
+/* #favTable {margin-top:20px;} */
