@@ -2,7 +2,10 @@
 	"background_page": "html/background.html",
   	"description":     "Simple, useful homescreen extension. Appears when you open a new tab or window.",
   	"name":	           "Homescreen Extension",
-  	"version":         "0.4",
+  	"version":         "0.8",
+	"icons":           {"32": "images/icons/32.png",
+                        "48": "images/icons/48.png", 
+                        "64": "images/icons/64.png"},
 	"permissions":	   ["tabs", "bookmarks", "http://*.google.com/", "https://*.google.com/"],
 
 	"chrome_url_overrides": {
