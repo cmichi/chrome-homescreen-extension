@@ -16,11 +16,6 @@ You can install the extension directly from the Google Gallery:
 https://chrome.google.com/extensions/detail/kombidlpgkiagdnhpablcbipanknhkoo
 
 
-## Favorite Bookmarks
-
-The bookmarks, which are displayed, are taken from the bookmark menu. If they are in no folder they are shown.
-
-
 ## Lately closed
 
 The lately closed tabs are cleared every time you close Chrome.
