@@ -1,15 +1,6 @@
-/* RESET  
-html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,fieldset,input { margin: 0; padding: 0; }
-h1,h2,h3,h4,h5,h6,pre,code,address,caption,cite,code,em,strong,th { font-size: 1em; font-weight: normal; font-style: normal; }
-ul,ol { list-style: none; }
-fieldset,img { border: none; }
-caption,th { text-align: left; }
-table { border-collapse: collapse; border-spacing: 0; }
-*/
-
 body {
 	margin: 0px;
-	background:url(../images/bg/all.jpg) no-repeat top center #000;
+	background:url(../images/bg/bg.jpg) no-repeat top center #000;
 	line-height: 30px;
 	font-weight: bold;
 	font-variant: normal;
@@ -20,50 +11,42 @@ body {
 }
 
 
-h1 {font-size:20px; }
-.recentlyClosedTabs h1 {margin-bottom:25px;}
-.favsContainer h1 {margin-bottom:26px;}
+h1 {
+	font-size:20px;
+}
+
+.recentlyClosedTabs h1 {
+	margin-bottom:25px;
+}
+
+.favsContainer h1 {
+	margin-bottom:26px;
+}
 
 a:link {
 	color: #93979f;
 }
+
 a:visited {
 	color: #93979f;
 }
+
 a:hover {
 	color: #777a7f;
 }
+
 a {
-	text-decoration: none
+	text-decoration: none;
 }
+
 a:active {
 	color: #93979f;
 }
 
 
-
-/********************** Boxes ******************/
-#naviContainer {
-	float:right;
-	clear:both;
-	text-align:right; 
-	margin-right:45px;
-	margin-top:-5px;
-}
-
-#recentlyClosedTabsList {clear:both; float:left; }
-
-#naviContainer img {float:right; margin-left:5px; }
-
-#next_inactive, #previous_inactive {display:none;}
-
+/********************** Basic Layout elements ******************/
 .mainContainer {
 	margin-top:200px;	
-}
-
-
-.bottomContainer {
-	background:url(../images/bg/bottom.png) repeat-y;	
 }
 
 .topIcon {
@@ -72,7 +55,6 @@ a:active {
 	top:0px;
 	left: 50px;
 }
-
 
 #log {
 	padding:5px; 
@@ -84,14 +66,31 @@ a:active {
 	text-shadow: none;
 }
 
+
+
+/********************** Boxes ******************/
 .box {
 	width:416px;
 	margin:0px 20px 0px 20px;
 	height:353px;
 	padding:6px 10px 10px 20px;
-	background:url(../images/box2.png) no-repeat;
+	background:url(../images/box.png) no-repeat;
 }
 
+
+
+/********************** Navigation ******************/
+#naviContainer {
+	float:right;
+	clear:both;
+	text-align:right; 
+	margin-right:45px;
+	margin-top:30px;
+}
+.beforeNavi {clear:both; float:left; height:220px; }
+
+#naviContainer img {float:right; margin-left:5px; }
+#next_inactive, #previous_inactive {display:none;}
+
 #recentlyClosedTabsList li {margin-bottom:14px;}
-#recentlyClosedTabsList {height:220px;}
-/* #favTable {margin-top:20px;} */
+
