@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title>Homescreen Options</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" href="../css/options.css" type="text/css" media="screen" /> 	
+	<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../js/options.js"></script>
+</head>
+<body onload="restore_options();">
+	
+	<h1>Homescreen Extension: Options</h1>
+	
+	<div id="status"></div>
+	
+	<div style="float:left;clear:both;">
+		
+		<h2>Favorites Box</h2>
+	
+	
+		<input name="favLinks" type="radio" value="bmark_menu" /> Use links from bookmark menubar<br />
+		<input name="favLinks" type="radio" value="txtLinks" /> Use links from this box (one entry per line, in the format Name::Link):<br />
+	
+		<textarea id="txtLinks" name="txtLinks"></textarea>
+	
+	
+		<br />
+		<button onclick="save_options()">Save options</button>
+	
+	</div>
+	
+</body>
+</html>

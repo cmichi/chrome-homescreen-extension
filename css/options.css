@@ -1,0 +1,32 @@
+body {
+	font-size: 16px;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif;	
+}
+
+
+h1 {
+	font-size:20px;
+	margin-bottom:15px;
+}
+
+h2 {
+	font-size:18px;
+}
+
+
+#txtLinks {
+	margin: 10px 0px 25px 25px;
+	height:150px;
+	width:500px;
+}
+
+#status {
+	background:#8cf49f;
+	color:#000;
+	border:1px solid #000;
+	padding:10px;
+	float:left;
+	clear:both;
+	margin:10px 0px 10px 0px;
+	display:none;
+}
