@@ -86,40 +86,69 @@ function init() {
 function displayFavs(page) {
     if (page < 0) return;
 	
-	chrome.bookmarks.getTree(function(a) {
+	if (localStorage["favLinks"] == "" || typeof(localStorage["favLinks"]) == "undefined" || localStorage["favLinks"] == "bmark_menu") {
+		chrome.bookmarks.getTree(function(a) {
 		
-		// have to sanatize the array
-		sanatizedObject = new Array();
-		ob = a[0].children[0].children;
-		for (i = 0; i < ob.length; i++) {
-			if (ob[i].children == null) 
-				sanatizedObject.push(ob[i]);
-		}
+			// have to sanatize the array
+			sanatizedObject = new Array();
+			ob = a[0].children[0].children;
+			for (i = 0; i < ob.length; i++) {
+				if (ob[i].children == null) 
+					sanatizedObject.push(ob[i]);
+			}
 
+			td = "";
+			for (i = (page * favsPerPage); i < (page * favsPerPage) + favsPerPage; i++) {
+				if (typeof(sanatizedObject[i]) != "undefined") {
+					if (i == (page * favsPerPage) || i % 2 == 0)
+						td += "<tr>";
+			
+					td += '<td width="180" valign="middle" align="left"><a href="' + convert(sanatizedObject[i].url) + '">' + convert(sanatizedObject[i].title.trunc(18)) + '</a></td>';
+			
+					if (i == (page * favsPerPage) || i % 2 == 0)
+					  td += '<td width="30">&nbsp;</td>';
+			
+					if (i % 2 == 1)
+						td += '</tr><tr><td height="10"></td></tr>';
+				}
+			}
+			td += "</tr>";
+		
+			$("#favTable").html(td);		
+			navi(page, "favs", favsPerPage, sanatizedObject);
+			currentFavsPage = page;
+		});
+	} else {
+		sanatizedObject = JSON.parse(localStorage["txtLinks"]);
+		
 		td = "";
 		for (i = (page * favsPerPage); i < (page * favsPerPage) + favsPerPage; i++) {
 			if (typeof(sanatizedObject[i]) != "undefined") {
 				if (i == (page * favsPerPage) || i % 2 == 0)
 					td += "<tr>";
-			
-				td += '<td width="180" valign="middle" align="left"><a href="' + convert(sanatizedObject[i].url) + '">' + convert(sanatizedObject[i].title.trunc(18)) + '</a></td>';
-			
+		
+				td += '<td width="180" valign="middle" align="left"><a href="' + convert(sanatizedObject[i][1]) + '">' + convert(sanatizedObject[i][0].trunc(18)) + '</a></td>';
+		
 				if (i == (page * favsPerPage) || i % 2 == 0)
 				  td += '<td width="30">&nbsp;</td>';
-			
+		
 				if (i % 2 == 1)
 					td += '</tr><tr><td height="10"></td></tr>';
 			}
 		}
 		td += "</tr>";
-		
+	
 		$("#favTable").html(td);		
-		navi(page, "favs", tabsPerPage, sanatizedObject);
-		currentFavsPage = page;
-	});
+		navi(page, "favs", favsPerPage, sanatizedObject);
+		currentFavsPage = page;		
+	}
 }
 
 
 function convert(txt) {
 	return txt;
 }
+
+chrome.extension.onRequest.addListener( function(request) { 
+	window.location.reload();
+});
