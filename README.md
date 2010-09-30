@@ -13,7 +13,7 @@ Screen resolutions up to 1900x1200 are supported.
 
 You can install the extension directly from the Google Gallery:
 
-https://chrome.google.com/extensions/detail/kombidlpgkiagdnhpablcbipanknhkoo
+[https://chrome.google.com/extensions/detail/kombidlpgkiagdnhpablcbipanknhkoo](https://chrome.google.com/extensions/detail/kombidlpgkiagdnhpablcbipanknhkoo)
 
 
 ## Lately closed
