@@ -10,10 +10,9 @@ function save_options() {
 			line = lines[index].split("::");
 		
 			if (line.length == 2 && line[0] != "" && typeof(line[0]) != "undefined"
-				 && line[1] != "" && typeof(line[1]) != "undefined") {
-				var obj = new Array();
-				obj.push(line[0]);
-				obj.push(line[1]);
+				 && line[1] != "" && typeof(line[1]) != "undefined") 
+			{
+				var obj = new Array(line[0], line[1]);
 				sanatizedObject.push(obj);
 			}
 		
