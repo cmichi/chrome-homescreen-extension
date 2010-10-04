@@ -12,7 +12,7 @@ function updateAllNewTabPages() {
 	}	
 }
 
-chrome.tabs.onRemoved.addListener(function (tabId) {	
+chrome.tabs.onRemoved.addListener(function(tabId) {	
 	tab = JSON.parse(globalTabRegistry[tabId]);
 	
 	if (tab["url"] != "chrome://newtab/") {
